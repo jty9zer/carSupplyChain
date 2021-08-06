@@ -17,12 +17,12 @@ public class CarOrderDetails {
     //单价
     private BigDecimal price;
 
-    private Integer orderId;
+    private int orderId;
 
     public CarOrderDetails() {
     }
 
-    public CarOrderDetails(Long id, String goodsname, Integer num, String produce, BigDecimal price, Integer orderId) {
+    public CarOrderDetails(Long id, String goodsname, Integer num, String produce, BigDecimal price, int orderId) {
         this.id = id;
         this.goodsname = goodsname;
         this.num = num;
@@ -71,11 +71,11 @@ public class CarOrderDetails {
         this.price = price;
     }
 
-    public Integer getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Integer orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 }

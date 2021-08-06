@@ -1,6 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.dongtech.vo.CarGoods" %>
+<%@ page import="java.util.List" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,8 +15,10 @@
 <body>
 <div class="w">
     <header>
-        <a href="${pageContext.request.contextPath }/cargoods/getCart" >
-            <input type="button" οnclick="javascrtpt:window.location.href='${pageContext.request.contextPath}/cargoods/getCart'" value="我的购物车" class="btn">
+        <a href="${pageContext.request.contextPath }/cargoods/getCart">
+            <input type="button"
+                   οnclick="javascrtpt:window.location.href='${pageContext.request.contextPath}/cargoods/getCart'"
+                   value="我的购物车" class="btn">
         </a>
     </header>
     <div class="list">
@@ -21,11 +26,25 @@
             <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
                 <tr>
                     <th width="18%">名称</th>
-                    <th width="18%">描述</th>
-                    <th width="5%">价格</th>
-                    <th width="10%">生产商</th>
+                    <th width="18%">价格</th>
+                    <th width="5%">生产商</th>
+                    <th width="10%">数量</th>
                     <th width="9%">操作</th>
                 </tr>
+                <%
+                    List<CarGoods> carGoodsList = (List<CarGoods>) request.getAttribute("list");
+                    if (carGoodsList != null) {
+                        for (CarGoods carGoods : carGoodsList) {
+                            out.write("<tr>");
+                            out.write("<td>" + carGoods.getName() + "</td>");
+                            out.write("<td>" + carGoods.getPrice() + "</td>");
+                            out.write("<td>" + carGoods.getProduce() + "</td>");
+                            out.write("<td>" + carGoods.getNum() + "</td>");
+                            out.write("<td><a href='/cargoods/addGoodsToCart?goodsId="+ carGoods.getId() + "'>加入购物车</a></td>");
+                            out.write("</tr>");
+                        }
+                    }
+                %>
 
             </table>
         </div>

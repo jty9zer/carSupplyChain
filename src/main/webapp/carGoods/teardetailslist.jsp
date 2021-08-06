@@ -1,6 +1,7 @@
-<%@ page import="com.dongtech.vo.Cart" %>
 <%@ page import="com.dongtech.vo.CarOrders" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.dongtech.vo.CarOrderDetails" %>
+<%@ page import="com.dongtech.vo.TearDownDetails" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
@@ -18,23 +19,21 @@
         <div class="list-bd">
             <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
                 <tr>
-                    <th width="18%">编号</th>
-                    <th width="5%">价格</th>
-                    <th width="10%">操作</th>
-                    <%--<th width="10%">数量</th>--%>
+                    <th width="18%">名称</th>
+                    <th width="5%">编号</th>
+                    <th width="5%">生产地</th>
+                    <th width="5%">数量</th>
                 </tr>
 
                 <%
-                    List<CarOrders> carOrdersList = (List<CarOrders>) request.getAttribute("list");
-                    if (carOrdersList != null) {
-                        for (CarOrders carOrders : carOrdersList) {
+                    List<TearDownDetails> tearDownDetailsList = (List<TearDownDetails>) request.getAttribute("list");
+                    if (tearDownDetailsList != null) {
+                        for (TearDownDetails tearDownDetails : tearDownDetailsList) {
                             out.write("<tr>");
-                            out.write("<td>" + carOrders.getNumber() + "</td>");
-                            out.write("<td>" + carOrders.getPrice() + "</td>");
-                            out.write("<td>"
-                                    +"<a href='/cargoods/queryordersdetails?id="+ carOrders.getId() + "'>订单详情  </a>"
-                                    +"<a href='/cargoods/teardowndetails?orderId="+ carOrders.getId() + "'>拆单</a>"
-                                    + "</td>");
+                            out.write("<td>" + tearDownDetails.getCargoods_name() + "</td>");
+                            out.write("<td>" + tearDownDetails.getOrderId() + "</td>");
+                            out.write("<td>" + tearDownDetails.getProduce() + "</td>");
+                            out.write("<td>" + tearDownDetails.getNum() + "</td>");
                             out.write("</tr>");
                         }
                     }

@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  */
 public class TearDownDetails {
     private Long id;
-    private Integer orderId;
+    private Long orderId;
     private String produce;
     private String cargoods_name;
     private Integer num;
@@ -23,11 +23,11 @@ public class TearDownDetails {
         this.id = id;
     }
 
-    public Integer getOrderId() {
+    public Long getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Integer orderId) {
+    public void setOrderId(Long orderId) {
         this.orderId = orderId;
     }
 
@@ -58,7 +58,7 @@ public class TearDownDetails {
     public TearDownDetails() {
     }
 
-    public TearDownDetails(Long id, Integer orderId, String produce, String cargoods_name, Integer num) {
+    public TearDownDetails(Long id, Long orderId, String produce, String cargoods_name, Integer num) {
         this.id = id;
         this.orderId = orderId;
         this.produce = produce;

@@ -1,3 +1,6 @@
+<%@ page import="com.dongtech.vo.CarOrders" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.dongtech.vo.CarOrderDetails" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
@@ -20,6 +23,20 @@
                     <th width="5%">生产地</th>
                     <th width="5%">价格</th>
                 </tr>
+
+                <%
+                    List<CarOrderDetails> carOrderDetailsList = (List<CarOrderDetails>) request.getAttribute("list");
+                    if (carOrderDetailsList != null) {
+                        for (CarOrderDetails carOrderDetails : carOrderDetailsList) {
+                            out.write("<tr>");
+                            out.write("<td>" + carOrderDetails.getGoodsname() + "</td>");
+                            out.write("<td>" + carOrderDetails.getNum() + "</td>");
+                            out.write("<td>" + carOrderDetails.getProduce() + "</td>");
+                            out.write("<td>" + carOrderDetails.getPrice() + "</td>");
+                            out.write("</tr>");
+                        }
+                    }
+                %>
 
             </table>
         </div>
